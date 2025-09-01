@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import LanguageSelection from './components/LanguageSelection';
+import Dashboard from './components/Dashboard/Dashboard';
 
-function App() {
+const App = () => {
+  const [language, setLanguage] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // This would be replaced by a real login check
+  const handleLogin = (lang) => {
+    setLanguage(lang);
+    setIsLoggedIn(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="font-sans antialiased text-gray-900 bg-gray-50">
+      {!isLoggedIn ? (
+        <LanguageSelection setLanguage={handleLogin} />
+      ) : (
+        <Dashboard language={language} setLanguage={setLanguage} />
+      )}
     </div>
   );
-}
+};
 
 export default App;
+
