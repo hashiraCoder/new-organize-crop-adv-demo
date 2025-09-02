@@ -1,0 +1,43 @@
+/* frontend/src/styles/Weather.css */
+
+.weather-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #374151; /* text-gray-700 */
+  margin-bottom: 1rem;
+}
+
+.current-weather-card {
+  background: linear-gradient(135deg, #a8e0ff 0%, #86b9ff 100%);
+  color: #1e3a8a; /* A dark blue */
+}
+
+.current-weather-card .card-title {
+  color: #1e3a8a;
+}
+
+.alerts-card {
+  background: linear-gradient(135deg, #fef9c3 0%, #fde047 100%); /* yellow-100 to yellow-400 */
+  color: #78350f; /* A dark brown */
+}
+
+.alerts-card .card-title {
+  color: #78350f;
+}
+
+.forecast-day-card {
+  background-color: #f9fafb; /* gray-50 */
+  border: 1px solid #e5e7eb; /* gray-200 */
+}

@@ -1,28 +1,32 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.css'; // Corrected path
 import LanguageSelection from './components/LanguageSelection';
 import Dashboard from './components/Dashboard/Dashboard';
 
 const App = () => {
-  const [language, setLanguage] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // If a language is saved in localStorage, use it to persist login
+  const [language, setLanguage] = useState(localStorage.getItem('kisan-saathi-lang'));
 
-  // This would be replaced by a real login check
   const handleLogin = (lang) => {
+    localStorage.setItem('kisan-saathi-lang', lang); // Save language choice
     setLanguage(lang);
-    setIsLoggedIn(true);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('kisan-saathi-lang'); // Clear saved language
+    setLanguage(null);
+  }
 
   return (
     <div className="font-sans antialiased text-gray-900 bg-gray-50">
-      {!isLoggedIn ? (
+      {!language ? (
         <LanguageSelection setLanguage={handleLogin} />
       ) : (
-        <Dashboard language={language} setLanguage={setLanguage} />
+        // Pass logout handler to Dashboard
+        <Dashboard language={language} setLanguage={setLanguage} handleLogout={handleLogout} />
       )}
     </div>
   );
 };
 
 export default App;
-
